@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { myThunk } from '@app/src/views/profile/state/user/thunk';
+import { myThunk } from '@app/src/views/profile/state/user/services';
 import { UserList } from '@app/src/views/profile/components/UserList';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 export class UserContainer extends React.Component<IProps, {}> {
 
-  componentDidMount() {
+  public componentDidMount() {
     const { myThunk } = this.props;
     myThunk();
   }
@@ -35,7 +35,7 @@ export class UserContainer extends React.Component<IProps, {}> {
 const mapStateToProps = ({ user }) => user;
 
 const mapDispatchToProps = (dispatch: any) => ({
-  myThunk: (payload: number) => dispatch(myThunk(payload))
+  myThunk: () => dispatch(myThunk())
 });
 
 export const UserContainerConnected = connect(
