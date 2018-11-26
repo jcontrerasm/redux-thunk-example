@@ -1,7 +1,13 @@
 import { FETCH_USER_START, FETCH_USER_SUCCESS, FETCH_USER_ERROR } from './actionTypes';
 import { IAction } from '@app/src/common/interfaces/action';
 
-const initialState: object = {
+interface IInitialState {
+  userData: object[];
+  fetching: boolean;
+  error: any;
+}
+
+const initialState: IInitialState = {
   userData: [],
   fetching: false,
   error: null,

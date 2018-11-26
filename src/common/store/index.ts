@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { profileState } from '@app/src/views/profile/state';
 
@@ -8,7 +8,9 @@ const CONFIG_REDUX_DEV_TOOL = (
 );
 
 export const store = createStore(
-  profileState,
+  combineReducers({
+    ...profileState
+  })
   CONFIG_REDUX_DEV_TOOL,
   applyMiddleware(thunk)
 );
