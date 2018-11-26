@@ -10,7 +10,7 @@ const CONFIG_REDUX_DEV_TOOL = (
 export const store = createStore(
   combineReducers({
     ...profileState
-  })
+  }),
   CONFIG_REDUX_DEV_TOOL,
   applyMiddleware(thunk)
 );

@@ -4,8 +4,10 @@ import { myThunk } from '@app/src/views/profile/state/user/services';
 import { UserList } from '@app/src/views/profile/components/UserList';
 
 interface IProps {
-  myThunk(): void,
+  myThunk(): any,
   userData: object[]
+  error: any;
+  fetching: boolean;
 }
 
 export class UserContainer extends React.Component<IProps, {}> {
@@ -17,7 +19,7 @@ export class UserContainer extends React.Component<IProps, {}> {
 
   public render(): JSX.Element {
     const { userData } = this.props;
-    console.log(userData);
+
     return(
       <React.Fragment>
         { userData.length > 0
@@ -32,7 +34,7 @@ export class UserContainer extends React.Component<IProps, {}> {
   }
 }
 
-const mapStateToProps = ({ user }) => user;
+const mapStateToProps = (state: any) => state.user;
 
 const mapDispatchToProps = (dispatch: any) => ({
   myThunk: () => dispatch(myThunk())
